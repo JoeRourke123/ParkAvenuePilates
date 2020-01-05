@@ -9636,3 +9636,14 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+#sentAlert {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  opacity: 0.85;
+
+  display: none;
+
+  z-index: 999;
+}

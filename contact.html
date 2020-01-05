@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Vineyard - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Contact - Park Avenue Pilates</title>
+    <link rel="icon" href="/images/favicon.ico">
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -29,19 +31,23 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-
+    <div id="sentAlert">
+      <div class="alert alert-success" role="alert">
+        Thanks for getting in touch! We'll get back to you shortly.
+      </div>
+    </div>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Park Avenue <span>Pilates</span></a>
+	      <a class="navbar-brand" href="/">Park Avenue <span>Pilates</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="classes.html" class="nav-link">Classes</a></li>
-	          <li class="nav-item active"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="/classes" class="nav-link">Classes</a></li>
+	          <li class="nav-item active"><a href="/contact" class="nav-link">Contact</a></li>
 
 	        </ul>
 	      </div>
@@ -77,7 +83,7 @@
         </div>
         <div class="row block-9">
           <div class="col-lg-12 order-md-last d-flex">
-            <form id="contactForm" class="bg-light p-5 contact-form">
+            <form action="https://mailthis.to/vicki@parkavenuepilates.co.uk" method="POST" target="_blank" class="bg-light p-5 contact-form">
               <div class="form-group">
                 <input type="text" class="form-control" name="name" placeholder="Your Name">
               </div>
@@ -93,6 +99,9 @@
               <div class="form-group">
                 <button type="submit" class="btn btn-primary py-3 px-5">Send Message</button>
               </div>
+
+              <input type="hidden" name="_honeypot" value="">
+              <input type="hidden" name="_after" value="https://parkavenuepilates.co.uk/contact?sent=True">
             </form>
           </div>
         </div>
@@ -107,9 +116,8 @@
               <h2 class="ftco-heading-2"><a class="navbar-brand" href="index.html">Park Avenue <span>Pilates</span></a></h2>
               <p>“You will feel better in ten sessions, look better in twenty sessions, and have a completely new body in thirty sessions.” <br>- <em>Joseph Pilates</em></p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/parkavenuepilates/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="mailto://vicki@parkavenupilates.co.uk"><span class="icon-envelope"></span></a></li>
               </ul>
             </div>
           </div>
@@ -160,17 +168,14 @@
   <script src="js/scrollax.min.js"></script>
   <script src="js/main.js"></script>
   <script>
-   $(document).ready(() => {
-     $("#contactForm").on("submit", (e) => {
-       e.preventDefault();
-       let data = $("#contactForm").serialize();
 
-       $.post("https://mailthis.to/josephrourke1@gmail.com", data, (d,s) => {
-         console.log(d);
-         console.log(s);
-       });
-     });
-   })
+    $(document).ready(() => {
+      params={};location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(s,k,v){params[k]=v});
+
+      if(params["sent"] === "True") {
+        $("#sentAlert").show().delay(5000).fadeOut();
+      }
+    });
   </script>
   </body>
 </html>
